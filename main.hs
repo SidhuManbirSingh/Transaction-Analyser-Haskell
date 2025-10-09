@@ -95,7 +95,7 @@ totalByCategory transactions =
             -- Basically acc (current total) + tAmount t (amount of current transaction)
             -- 0.0 is the initial value of the accumulator
             -- group is the list of transactions in the current category
-                     
+
         in (category, total)
   in map calculateTotal grouped
 
@@ -122,8 +122,20 @@ formatTransactions txns =
           (tDate t) (tCategory t) (tAmount t) (tNote t)
       -- Map formatRow over the transactions
       rows = map formatRow txns
+      -- maps converts each Transaction object in the list txns to a formatted string using formatRow function
   -- b. Join with unlines
+  -- basically inline all the rows  and join them with new line
   in unlines (header : rows)
+
+-- Little Explainer:
+-- Here our function formatTransactions takes one parameter
+-- 1. A list of Transaction objects [Transaction] 
+-- and then returns a formatted string String
+
+-- Line 122: contains weird syntax
+-- %-10s means left-align a string in a field of width 10
+-- %8.2f means right-align a floating-point number in a field of width 8 with 2 decimal places is just a literal character to separate fields
+-- %s just prints the string  
 
 -- | 💻 Main Execution
 ----------------------
@@ -136,23 +148,23 @@ main = do
   putStrLn (formatTransactions sampleTransactions)
 
   putStrLn "\n## Filtered: Electronics Category"
-  -- Chain filters: Filter by Category
+
   let electronicsTxns = filterByCategory "Electronics" sampleTransactions
   putStrLn (formatTransactions electronicsTxns)
 
   putStrLn "\n## Filtered: Amount >= $50.00"
-  -- Chain filters: Filter by Min Amount
+  
   let highValueTxns = filterByMinAmount 50.00 sampleTransactions
   putStrLn (formatTransactions highValueTxns)
 
   putStrLn "\n## Filtered: Books AND Amount >= $20.00"
-  -- Chain filters: Filter by Category, then by Min Amount
+  
   let expensiveBooks =
         filterByMinAmount 20.00 $
         filterByCategory "Books" sampleTransactions
   putStrLn (formatTransactions expensiveBooks)
 
   putStrLn "\n## Total Spent By Category (All Transactions)"
-  -- Print totals
+  
   let totals = totalByCategory sampleTransactions
   mapM_ (\(cat, total) -> printf "  %-11s: $%.2f\n" cat total) totals
