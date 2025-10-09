@@ -1,0 +1,32 @@
+--- E-commerce Transaction Analyzer ---
+
+## All Sample Transactions
+Date       | Category    | Amount    | Note
+2025-10-01 | Electronics |   199.99 | Wireless headphones
+2025-10-02 | Books       |    25.50 | Haskell Programming Book
+2025-10-03 | Electronics |    49.99 | USB-C Cable
+2025-10-04 | Software    |    12.00 | Monthly SaaS Subscription
+2025-10-05 | Books       |    15.00 | Sci-Fi Novel
+2025-10-06 | Electronics |     9.99 | Screen Protector
+
+
+## Filtered: Electronics Category
+Date       | Category    | Amount    | Note
+2025-10-01 | Electronics |   199.99 | Wireless headphones
+2025-10-03 | Electronics |    49.99 | USB-C Cable
+2025-10-06 | Electronics |     9.99 | Screen Protector
+
+
+## Filtered: Amount >= $50.00
+Date       | Category    | Amount    | Note
+2025-10-01 | Electronics |   199.99 | Wireless headphones
+
+
+## Filtered: Books AND Amount >= $20.00
+Date       | Category    | Amount    | Note
+2025-10-02 | Books       |    25.50 | Haskell Programming Book
+
+
+## Total Spent By Category (All Transactions)
+  Books      : $40.50
+  Software   : $12.00
