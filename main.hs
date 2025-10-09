@@ -67,7 +67,7 @@ filterByMinAmount minAmount =
 
 
 
--- | 📊 Transaction Analysis
+-- | Transaction Analysis
 -----------------------------
 
 -- 5. Implement totalByCategory :: [Transaction] -> [(String, Double)]
@@ -106,7 +106,7 @@ totalByCategory transactions =
 -- where each tuple contains a category and the total amount spent in that category.
 
 
--- | 📄 Transaction Formatting
+-- | Transaction Formatting
 -----------------------------
 
 -- 6. Implement formatTransactions :: [Transaction] -> String
@@ -137,13 +137,13 @@ formatTransactions txns =
 -- %8.2f means right-align a floating-point number in a field of width 8 with 2 decimal places is just a literal character to separate fields
 -- %s just prints the string  
 
--- | 💻 Main Execution
+-- | Main Execution
 ----------------------
 
 -- 7. Write main :: IO ()
 main :: IO ()
 main = do
-  putStrLn "--- 🧾 E-commerce Transaction Analyzer ---"
+  putStrLn "--- E-commerce Transaction Analyzer ---"
   putStrLn "\n## All Sample Transactions"
   putStrLn (formatTransactions sampleTransactions)
 
