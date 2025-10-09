@@ -155,12 +155,7 @@ Date       | Category    | Amount    | Note
 
 This project is available for educational purposes[web:11].
 
-## Author
-
-Created as a functional programming learning project demonstrating Haskell fundamentals[web:9].
-```
-
-This README follows best practices for Haskell documentation, providing clear installation instructions, usage examples, technical details about implementation choices, and suggestions for extending the project.
+## References
 
 [1](https://blog.haskell.org/documentation-best-practices-in-2024/)
 [2](https://sakshamsharma.com/2018/03/haskell-proj-struct/)
