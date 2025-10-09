@@ -91,6 +91,11 @@ totalByCategory transactions =
         let category = tCategory (head group)
             total = foldl' (\acc t -> acc + tAmount t) 0.0 group
             -- fodl' is a strict version of foldl that helps avoid stack overflows on large lists by evaluating the accumulator at each step.
+            -- It is a lambda function that takes an accumulator acc and a transaction t
+            -- Basically acc (current total) + tAmount t (amount of current transaction)
+            -- 0.0 is the initial value of the accumulator
+            -- group is the list of transactions in the current category
+                     
         in (category, total)
   in map calculateTotal grouped
 
