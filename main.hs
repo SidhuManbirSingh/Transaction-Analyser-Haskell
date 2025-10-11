@@ -76,12 +76,16 @@ totalByCategory :: [Transaction] -> [(String, Double)]
 totalByCategory transactions =
   -- a. Sort by category (required for groupBy to work correctly)
   -- sortBy is a built in function in Haskell that sorts a list based on a comparison function.
-  -- comparing is a helper function that creates a comparison between two transactions based on the tCategory field.
+  -- comparing is a helper function that creates a comparison 
+  -- between two transactions based on the tCategory field.
   let sorted = sortBy (comparing tCategory) transactions
       -- b. Group consecutive transactions with the same category
-      -- groupBy is a built in function that groups consecutive elements in a list based on a predicate (which is category).
+      -- groupBy is a built in function that groups consecutive elements
+      -- in a list based on a predicate (which is category).
       -- (==) means equality check
-      -- on is a helper function that transforms a binary function (like (==)) into a function that operates on the results of applying another function (like tCategory). 
+      -- on is a helper function that transforms a binary function  
+      -- (like (==)) into a function that operates on the results 
+      -- of applying another function (like tCategory). 
       grouped = groupBy ((==) `on` tCategory) sorted
       -- c. Map groups to (category, sum amounts)
       -- calculateTotal is expecting a group of arguments (Transaction objects)
@@ -90,12 +94,12 @@ totalByCategory transactions =
       calculateTotal group =
         let category = tCategory (head group)
             total = foldl' (\acc t -> acc + tAmount t) 0.0 group
-            -- fodl' is a strict version of foldl that helps avoid stack overflows on large lists by evaluating the accumulator at each step.
+            -- fodl' is a strict version of foldl that helps avoid stack overflows 
+            -- on large lists by evaluating the accumulator at each step.
             -- It is a lambda function that takes an accumulator acc and a transaction t
             -- Basically acc (current total) + tAmount t (amount of current transaction)
             -- 0.0 is the initial value of the accumulator
             -- group is the list of transactions in the current category
-
         in (category, total)
   in map calculateTotal grouped
 
